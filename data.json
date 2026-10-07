@@ -94,6 +94,40 @@
             ]
           }
         ]
+      },
+      "compare": {
+        "summary": "Box très robuste et étanche, pensée pour tous les jours et pour sortir par tous les temps.",
+        "specs": {
+          "Puissance": "Jusqu'à 200 W",
+          "Accus": "2 x 18650 (non fournis)",
+          "Modes": "Power, Smart, Boost, Eco, Memory (5 profils), contrôle de température (TCR seulement)",
+          "Écran": "TFT couleur de 0,96 pouce, grand et lumineux",
+          "Charge": "USB-C, 5 V / 3 A annoncés (recharge externe conseillée)",
+          "Étanchéité": "IP68 (eau, poussière, chocs)",
+          "Dimensions": "55,4 mm de large, 140,5 mm de haut (poids non indiqué)",
+          "Verrouillage": "Tactile automatique (capteur de chaleur), par bouton, ou désactivé",
+          "Réservoir fourni": "Z Fli, 5,5 ml annoncés, avec outil pour changer la résistance",
+          "Résistances": "0,1 à 3,0 Ω"
+        },
+        "uses": [
+          "Usage quotidien, poche ou sac, y compris sous la pluie",
+          "Vapoteurs qui veulent une box solide et fiable plutôt que la plus puissante"
+        ],
+        "pros": [
+          "Finition très solide, rien ne semble fragile",
+          "Verrouillage tactile automatique qui fonctionne bien d'après le test",
+          "Puissance de sortie précise",
+          "Grand écran lumineux, dix coloris"
+        ],
+        "cons": [
+          "Réservoir fourni jugé moyen",
+          "Mode courbe de puissance (VPC) supprimé par rapport aux anciennes versions",
+          "Trois modes automatiques jugés superflus",
+          "Le verrouillage tactile de la série Aegis 3 ne rassure pas tout le monde"
+        ],
+        "awards": [
+          "La Legend 5, de la même série, est classée parmi les meilleures box par Vaping360 et Ecigclick"
+        ]
       }
     },
     {
@@ -103,7 +137,43 @@
       "minW": 6,
       "maxW": 80,
       "batteries": "1 x 18650",
-      "note": "Box régulée 6-80 W, un accu 18650. Vendue avec le réservoir Zenith 2."
+      "note": "Box régulée 6-80 W, un accu 18650. Vendue avec le réservoir Zenith 2.",
+      "compare": {
+        "summary": "Box compacte à un seul accu, sobre et agréable en main, idéale pour un usage quotidien en bouche-poumon ou poumon restreint.",
+        "specs": {
+          "Puissance": "6 à 80 W",
+          "Accus": "1 x 18650 remplaçable (non fourni)",
+          "Modes": "Puissance (W) et tension (V), technologie F0 (courant alternatif, 20 à 500 Hz), fonction Refresh ; pas de contrôle de température",
+          "Écran": "OLED assez lumineux, peu lisible en plein soleil",
+          "Charge": "USB-C",
+          "Étanchéité": "Non précisé",
+          "Dimensions": "Non précisé",
+          "Verrouillage": "Verrouillage des boutons de puissance (tir + bas)",
+          "Réservoir fourni": "Zenith 2, 2 ml, avec résistances Z 0,3 Ω (30-40 W) et 0,8 Ω (15-18 W)",
+          "Résistances": "0,1 à 3,5 Ω"
+        },
+        "uses": [
+          "Bouche-poumon et poumon restreint au quotidien",
+          "Vapoteurs qui veulent une box légère avec un seul accu"
+        ],
+        "pros": [
+          "Finition et prise en main très appréciées",
+          "Réponse rapide au tir",
+          "Réglage F0 pour la saveur et la durée de vie des résistances",
+          "Accu remplaçable",
+          "Zenith 2 avec verre amovible"
+        ],
+        "cons": [
+          "Souffle d'air bruyant sur le Zenith 2",
+          "Résistances qui s'usent plus vite au-delà de 35 W",
+          "Écran peu lisible au soleil",
+          "Embout gênant pour remplir avec de gros flacons",
+          "80 W au maximum"
+        ],
+        "awards": [
+          "Ecigclick : meilleure box à un seul accu"
+        ]
+      }
     },
     {
       "id": "voopoo-drag-5",
@@ -112,7 +182,43 @@
       "minW": 5,
       "maxW": 177,
       "batteries": "2 x 18650",
-      "note": "Box régulée 5-177 W, deux accus 18650. Vendue avec le réservoir UFORCE-X."
+      "note": "Box régulée 5-177 W, deux accus 18650. Vendue avec le réservoir UFORCE-X.",
+      "compare": {
+        "summary": "Box puissante et solide, pour le poumon direct à forte puissance et pour ceux qui utilisent le contrôle de température.",
+        "specs": {
+          "Puissance": "5 à 177 W",
+          "Accus": "2 x 18650 (non fournis), trappe magnétique",
+          "Modes": "Modes de puissance (dont Smart, Eco et RBA) et 4 modes de contrôle de température (nickel, titane, SS316, SS430)",
+          "Écran": "TFT couleur de 0,96 pouce, clair et lumineux",
+          "Charge": "USB-C, 5 V / 3 A annoncés mais 1,4 A mesuré au test",
+          "Étanchéité": "Non étanche (pas de norme IP)",
+          "Dimensions": "55,1 × 27,4 × 89,3 mm, 156,6 g",
+          "Verrouillage": "Curseur programmable sous l'écran (verrouille les boutons, la box entière, ou sert d'interrupteur)",
+          "Réservoir fourni": "UFORCE-X, 5,5 ml (2 ml en version européenne), avec résistances PnP-X 0,15 Ω (60-80 W) et 0,3 Ω (32-40 W)",
+          "Résistances": "Dès 0,08 Ω (la box tire sous 0,1 Ω)"
+        },
+        "uses": [
+          "Forte puissance et résistances très basses, en poumon direct",
+          "Vapoteurs qui veulent le contrôle de température"
+        ],
+        "pros": [
+          "Très solide, zinc et cuir, bonne prise en main",
+          "Compacte pour une box à deux accus",
+          "Écran couleur clair",
+          "Curseur de verrouillage programmable",
+          "Quatre modes de contrôle de température",
+          "Limite de courant élevée (38 A)"
+        ],
+        "cons": [
+          "Pas de norme IP : elle craint l'eau",
+          "Pas de préchauffage ni de courbe de puissance",
+          "Charge réelle bien plus lente que les valeurs annoncées",
+          "Réservoir fourni peu convaincant sur la saveur"
+        ],
+        "awards": [
+          "Choix de la rédaction (Editor's Choice) chez Ecigclick"
+        ]
+      }
     },
     {
       "id": "vaporesso-target-100",
@@ -121,7 +227,42 @@
       "minW": 5,
       "maxW": 100,
       "batteries": "1 x 21700",
-      "note": "Box régulée 5-100 W, un accu 21700. Vendue avec le réservoir iTank."
+      "note": "Box régulée 5-100 W, un accu 21700. Vendue avec le réservoir iTank.",
+      "compare": {
+        "summary": "Box légère avec un seul accu 21700, pour le poumon direct à puissance moyenne et pour sortir léger.",
+        "specs": {
+          "Puissance": "5 à 100 W, par pas de 1 W",
+          "Accus": "1 x 21700 externe (non fourni)",
+          "Modes": "Puissance, tension variable (par 0,1 V), bypass, F(t) et Pulse",
+          "Écran": "TFT de 0,96 pouce, texte plus petit et moins lisible que sur la génération précédente",
+          "Charge": "USB-C, 2 A annoncés (1,4 A mesuré au test)",
+          "Étanchéité": "Non précisé",
+          "Dimensions": "87,9 × 35,2 × 28,3 mm, 88,8 g",
+          "Verrouillage": "Non précisé",
+          "Réservoir fourni": "iTank, 5 ml (2 ml en version européenne), avec résistances GTi 0,2 Ω et 0,4 Ω",
+          "Résistances": "0,1 à 5,0 Ω"
+        },
+        "uses": [
+          "Poumon direct à puissance moyenne avec un seul accu",
+          "Vapoteurs qui veulent une box légère à glisser dans la poche"
+        ],
+        "pros": [
+          "Légère (environ 89 g) et compacte",
+          "Modes bypass, F(t) et Pulse",
+          "Panneaux en tissu plus agréables que l'ancien plastique",
+          "Les deux résistances fournies donnent de bons résultats aux puissances conseillées"
+        ],
+        "cons": [
+          "Texte de l'écran petit et moins lisible",
+          "Sifflement quand le flux d'air est grand ouvert",
+          "100 W au maximum",
+          "Marquage de la polarité des accus peu clair"
+        ],
+        "awards": [
+          "Ecigclick : meilleure box compacte",
+          "Vaping360 : second choix dans la catégorie box"
+        ]
+      }
     }
   ],
   "tanks": [
@@ -414,5 +555,17 @@
       "confidence": "medium",
       "note": ""
     }
+  ],
+  "compareRows": [
+    "Puissance",
+    "Accus",
+    "Résistances",
+    "Modes",
+    "Écran",
+    "Charge",
+    "Étanchéité",
+    "Dimensions",
+    "Verrouillage",
+    "Réservoir fourni"
   ]
 }

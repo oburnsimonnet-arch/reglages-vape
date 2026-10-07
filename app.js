@@ -49,9 +49,13 @@ if (typeof document !== "undefined") {
     const STORE_STATE = "vr_state_v1";
     const STORE_FAVS = "vr_favs_v1";
     const STORE_CUSTOM = "vr_custom_coils_v1";
+    const STORE_COMPARE = "vr_compare_v1";
+    const CMP_MIN = 2;
+    const CMP_MAX = 4;
 
     let data = null;
     let customCoils = [];
+    let cmpSel = [];
     let state = { modId: null, tankId: null, coilId: null, watts: null };
     let favs = [];
 
@@ -361,6 +365,142 @@ if (typeof document !== "undefined") {
         "<strong>" + formatNumber(e.volts, 2) + " V</strong> aux bornes · <strong>" + formatNumber(e.amps, 1) + " A</strong> dans la résistance";
     }
 
+    /* ----- Choix de la box (partagé entre l'onglet Réglages et Comparer) ----- */
+    function setMod(id) {
+      state.modId = id;
+      const okTanks = tanksForMod(currentMod());
+      if (!byId(okTanks, state.tankId)) {
+        state.tankId = okTanks[0].id;
+        const first = coilsForTank(currentTank())[0];
+        state.coilId = first ? first.id : null;
+        state.coilChanged = true;
+      }
+      save(STORE_STATE, state);
+      renderGear();
+      renderCoils();
+      renderResult();
+      renderCompare();
+    }
+
+    /* ----- Comparaison ----- */
+    const comparable = () => data.mods.filter((m) => m.compare);
+
+    function renderComparePicker() {
+      $("cmp-pick").innerHTML = comparable()
+        .map((m) => {
+          const on = cmpSel.includes(m.id);
+          return `<button class="chip" data-cmp="${escapeHtml(m.id)}" aria-pressed="${on}">
+            <span class="chip-ohm">${escapeHtml(m.brand + " " + m.name)}</span>
+            <span class="chip-sub">${escapeHtml("jusqu'à " + formatNumber(m.maxW, 0) + " W · " + m.batteries)}</span>
+          </button>`;
+        })
+        .join("");
+    }
+
+    function toggleCompare(id) {
+      const msg = $("cmp-msg");
+      msg.textContent = "";
+      if (cmpSel.includes(id)) {
+        cmpSel = cmpSel.filter((x) => x !== id);
+      } else if (cmpSel.length >= CMP_MAX) {
+        msg.textContent = "Tu peux comparer 4 box au maximum : retire-en une d'abord.";
+        return;
+      } else {
+        cmpSel.push(id);
+      }
+      save(STORE_COMPARE, cmpSel);
+      renderCompare();
+    }
+
+    function textCell(text, cls) {
+      const td = document.createElement("td");
+      td.textContent = text;
+      if (cls) td.className = cls;
+      return td;
+    }
+
+    function listCell(items, cls) {
+      const td = document.createElement("td");
+      const ul = document.createElement("ul");
+      if (cls) ul.className = cls;
+      (items || []).forEach((t) => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        ul.appendChild(li);
+      });
+      td.appendChild(ul);
+      return td;
+    }
+
+    function renderCompare() {
+      renderComparePicker();
+      const mods = comparable().filter((m) => cmpSel.includes(m.id));
+      const card = $("cmp-card");
+      if (mods.length < CMP_MIN) {
+        card.hidden = true;
+        $("cmp-msg").textContent = "Choisis au moins 2 box pour afficher le tableau.";
+        return;
+      }
+      card.hidden = false;
+
+      const table = document.createElement("table");
+      table.className = "cmp";
+
+      const hr = table.createTHead().insertRow();
+      const corner = document.createElement("th");
+      corner.className = "rowh";
+      hr.appendChild(corner);
+      mods.forEach((m) => {
+        const th = document.createElement("th");
+        th.scope = "col";
+        const name = document.createElement("span");
+        name.className = "mod-name";
+        name.textContent = m.name;
+        const brand = document.createElement("span");
+        brand.className = "mod-brand";
+        brand.textContent = m.brand;
+        const btn = document.createElement("button");
+        btn.className = "use-btn";
+        btn.dataset.use = m.id;
+        const current = m.id === state.modId;
+        btn.textContent = current ? "Ma box actuelle" : "Utiliser cette box";
+        btn.disabled = current;
+        th.append(name, brand, document.createElement("br"), btn);
+        hr.appendChild(th);
+      });
+
+      const tbody = table.createTBody();
+      const addRow = (label, build) => {
+        const tr = tbody.insertRow();
+        const th = document.createElement("th");
+        th.scope = "row";
+        th.className = "rowh";
+        th.textContent = label;
+        tr.appendChild(th);
+        mods.forEach((m) => tr.appendChild(build(m)));
+      };
+
+      const maxW = Math.max(...mods.map((m) => m.maxW));
+      const differ = mods.some((m) => m.maxW !== maxW);
+      addRow("En bref", (m) => textCell(m.compare.summary));
+      (data.compareRows || []).forEach((label) => {
+        addRow(label, (m) => {
+          const v = m.compare.specs && m.compare.specs[label];
+          if (!v || v === "Non précisé") return textCell("Non précisé", "muted");
+          return textCell(v, label === "Puissance" && differ && m.maxW === maxW ? "best" : "");
+        });
+      });
+      addRow("Réservoirs proposés", (m) => textCell(tanksForMod(m).map((t) => t.brand + " " + t.name).join(", ")));
+      addRow("Idéal pour", (m) => listCell(m.compare.uses));
+      addRow("Points forts", (m) => listCell(m.compare.pros, "pro"));
+      addRow("Points faibles", (m) => listCell(m.compare.cons, "con"));
+      addRow("Distinctions", (m) => listCell(m.compare.awards));
+
+      const wrap = $("cmp-table");
+      wrap.textContent = "";
+      wrap.appendChild(table);
+    }
+
     /* ----- Onglets ----- */
     function showTab(name) {
       document.querySelectorAll(".tab").forEach((t) => {
@@ -373,19 +513,17 @@ if (typeof document !== "undefined") {
 
     /* ----- Initialisation ----- */
     function bind() {
-      $("mod-select").addEventListener("change", (e) => {
-        state.modId = e.target.value;
-        const okTanks = tanksForMod(currentMod());
-        if (!byId(okTanks, state.tankId)) {
-          state.tankId = okTanks[0].id;
-          const first = coilsForTank(currentTank())[0];
-          state.coilId = first ? first.id : null;
-          state.coilChanged = true;
-        }
-        save(STORE_STATE, state);
-        renderGear();
-        renderCoils();
-        renderResult();
+      $("mod-select").addEventListener("change", (e) => setMod(e.target.value));
+      $("cmp-pick").addEventListener("click", (e) => {
+        const b = e.target.closest("[data-cmp]");
+        if (b) toggleCompare(b.dataset.cmp);
+      });
+      $("cmp-table").addEventListener("click", (e) => {
+        const b = e.target.closest("[data-use]");
+        if (!b) return;
+        setMod(b.dataset.use);
+        showTab("reglages");
+        window.scrollTo(0, 0);
       });
       $("tank-select").addEventListener("change", (e) => {
         state.tankId = e.target.value;
@@ -452,6 +590,14 @@ if (typeof document !== "undefined") {
       renderResult();
       renderFavs();
       renderCalc();
+      const valid = comparable().map((m) => m.id);
+      const savedCmp = load(STORE_COMPARE, null);
+      cmpSel = Array.isArray(savedCmp) ? savedCmp.filter((id) => valid.includes(id)).slice(0, CMP_MAX) : [];
+      if (cmpSel.length < CMP_MIN) {
+        cmpSel = [state.modId].concat(valid.filter((id) => id !== state.modId)).filter((id) => valid.includes(id)).slice(0, CMP_MIN);
+        if (cmpSel.length < CMP_MIN) cmpSel = valid.slice(0, CMP_MIN);
+      }
+      renderCompare();
       bind();
     }
 

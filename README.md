@@ -12,5 +12,8 @@ Tout passe par `data.json` (box, réservoirs, résistances), sans toucher au cod
 - `confidence` d'une résistance : `high` (plage recoupée), `medium` (source unique, affichée avec une étoile et un avertissement), `missing` (plage inconnue).
 - Les plages de puissance viennent des valeurs annoncées par le fabricant ; vérifie toujours l'inscription sur la résistance.
 
+## Onglet Comparer
+Chaque box de `data.json` peut avoir un objet `compare` : `summary`, `specs` (une valeur par ligne listée dans `compareRows`, « Non précisé » si inconnue), `uses`, `pros`, `cons`, `awards`. Une box sans `compare` n'apparaît pas dans la comparaison. N'y mets que ce que tes sources confirment.
+
 ## Test local
 `python3 -m http.server` puis ouvrir http://localhost:8000

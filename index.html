@@ -50,10 +50,11 @@
     h1 { font-size: 22px; margin: 0; letter-spacing: .2px; }
     .sub { color: var(--muted); font-size: 14px; margin: 2px 0 0; }
 
-    nav { display: flex; gap: 6px; margin: 10px 0 14px; background: var(--card); padding: 5px; border-radius: 14px; }
+    nav { display: flex; gap: 4px; margin: 10px 0 14px; background: var(--card); padding: 5px; border-radius: 14px; overflow-x: auto; scrollbar-width: none; }
+    nav::-webkit-scrollbar { display: none; }
     .tab {
-      flex: 1; border: 0; background: transparent; color: var(--muted);
-      padding: 10px 6px; border-radius: 10px; font: inherit; font-weight: 600; cursor: pointer;
+      flex: 1 0 auto; border: 0; background: transparent; color: var(--muted);
+      padding: 10px 12px; border-radius: 10px; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap;
     }
     .tab.active { background: var(--accent); color: var(--accent-ink); }
 
@@ -106,6 +107,23 @@
     .saved { color: var(--ok); font-size: 14px; min-height: 20px; margin: 8px 0 0; }
 
     .conf { color: var(--warn); }
+    .chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+    .chip-sub { color: var(--muted); font-size: 13px; }
+    .table-wrap { overflow-x: auto; margin: 0 -4px; padding: 0 4px; }
+    .cmp { border-collapse: separate; border-spacing: 0; min-width: 100%; font-size: 14px; }
+    .cmp th, .cmp td { padding: 10px; vertical-align: top; text-align: left; border-bottom: 1px solid var(--line); min-width: 150px; }
+    .cmp thead th { position: sticky; top: 0; background: var(--card); z-index: 2; }
+    .cmp th.rowh { position: sticky; left: 0; z-index: 1; background: var(--card); min-width: 108px; max-width: 108px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .3px; overflow-wrap: anywhere; }
+    .cmp thead th.rowh { z-index: 3; }
+    .cmp td.muted { color: var(--muted); font-style: italic; }
+    .cmp td.best { box-shadow: inset 0 0 0 2px var(--accent); border-radius: 8px; font-weight: 700; }
+    .cmp ul { margin: 0; padding-left: 16px; }
+    .cmp li { margin: 3px 0; }
+    .cmp .mod-name { font-weight: 800; font-size: 15px; display: block; }
+    .cmp .mod-brand { color: var(--muted); font-size: 12px; }
+    .cmp .use-btn { margin-top: 8px; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 10px; padding: 6px 10px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .cmp .pro li::marker { color: var(--ok); content: "+ "; }
+    .cmp .con li::marker { color: var(--bad); content: "− "; }
     .manual-sec { border-top: 1px solid var(--line); padding: 10px 0; }
     .manual-sec summary { cursor: pointer; font-weight: 700; }
     .manual-sec ul { margin: 8px 0 0; padding-left: 20px; }
@@ -141,6 +159,7 @@
       <button class="tab" data-tab="favoris" role="tab" aria-selected="false">Favoris</button>
       <button class="tab" data-tab="calcul" role="tab" aria-selected="false">Calcul</button>
       <button class="tab" data-tab="notice" role="tab" aria-selected="false">Notice</button>
+      <button class="tab" data-tab="comparer" role="tab" aria-selected="false">Comparer</button>
     </nav>
 
     <div id="load-error" class="error" hidden>Impossible de charger les données (data.json). Vérifie la connexion puis recharge la page.</div>
@@ -233,6 +252,21 @@
         <p class="note">Formules : tension = √(puissance × résistance), courant = √(puissance ÷ résistance).</p>
       </div>
     </section>
+    <section id="panel-comparer" class="panel" hidden>
+      <div class="card">
+        <h2>Box à comparer</h2>
+        <p class="note" style="margin-top:0">Touche les box pour les ajouter ou les retirer du tableau (2 à 4).</p>
+        <div class="chips" id="cmp-pick"></div>
+        <p class="note conf" id="cmp-msg" role="status"></p>
+      </div>
+      <div class="card" id="cmp-card" hidden>
+        <h2>Tableau comparatif</h2>
+        <p class="note" style="margin-top:0">Fais défiler le tableau vers la droite pour voir toutes les colonnes. La puissance maximale la plus élevée est encadrée.</p>
+        <div class="table-wrap" id="cmp-table"></div>
+      </div>
+      <p class="safety">Caractéristiques et avis tirés de tests indépendants et de fiches fabricant ; « Non précisé » signifie que je n'ai pas trouvé l'information dans mes sources.</p>
+    </section>
+
     <section id="panel-notice" class="panel" hidden>
       <div class="card">
         <h2 id="manual-title">Notice</h2>
