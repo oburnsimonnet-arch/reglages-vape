@@ -5,77 +5,83 @@
     {
       "id": "geekvape-aegis-legend",
       "brand": "Geekvape",
-      "name": "Aegis Legend",
+      "name": "Aegis Legend 3",
       "minW": 5,
       "maxW": 200,
       "batteries": "2 x 18650",
-      "note": "Box régulée 5-200 W (série Legend 2/3/5, deux accus 18650).",
+      "note": "Box régulée jusqu'à 200 W, deux accus 18650, verrouillage tactile.",
       "manual": {
-        "title": "Notice : Aegis Legend 2 (L200)",
-        "warning": "Ces consignes concernent le Legend 2 (L200). Le Legend 3 (verrouillage tactile) et le Legend 5 (levier latéral) se verrouillent autrement : en cas de doute, vérifie sur la notice papier de ta box.",
-        "source": "Notice Geekvape Aegis Legend 2, résumée",
-        "sourceUrl": "https://carnac.kendalch.com/upload/files/2564716312.pdf",
+        "title": "Notice : Aegis Legend 3",
+        "warning": "Résumé fait à partir d'un test indépendant et de la fiche produit Geekvape : je n'ai pas pu ouvrir la notice PDF officielle. Pour le verrouillage par bouton, la séquence exacte de clics n'est pas confirmée : passe par le menu.",
+        "source": "Test du Geekvape Aegis Legend 3 (Vaping360)",
+        "sourceUrl": "https://vaping360.com/reviews/geekvape-aegis-legend-3-review/",
         "sections": [
           {
             "title": "Installer les accus",
             "items": [
-              "La box fonctionne avec deux accus 18650.",
-              "Le logement s'ouvre par la trappe située sous la box : pousse le loquet en glissant avec une pression modérée.",
-              "Respecte le sens + / − indiqué dans le logement ; les contacts sont plaqués or.",
+              "La box fonctionne avec deux accus 18650 externes, non fournis avec la box.",
+              "Le logement s'ouvre par un loquet à ressort situé en bas de la box.",
+              "Respecte le sens + / − indiqué dans le logement.",
               "Utilise deux accus identiques (même marque, même modèle, même niveau de charge), de bonne qualité."
             ]
           },
           {
             "title": "Allumer et éteindre",
             "items": [
-              "Appuie 5 fois rapidement sur le bouton de tir (en 2 secondes environ) pour allumer : une animation s'affiche.",
+              "Appuie 5 fois rapidement sur le bouton de tir pour allumer.",
               "Refais les 5 clics pour éteindre."
             ]
           },
           {
-            "title": "Les clics sur le bouton de tir",
+            "title": "Verrouillage tactile",
             "items": [
-              "1 clic : tirer (vaper).",
-              "3 clics : ouvrir le menu des réglages.",
-              "5 clics : allumer ou éteindre.",
-              "Appui long : quitter le menu des réglages."
+              "La box détecte ta main : elle se déverrouille quand tu la prends et se verrouille quand tu la poses.",
+              "Trois réglages au choix dans le menu : verrouillage tactile (réglage par défaut), verrouillage par bouton, ou aucun verrouillage.",
+              "Si tu as désactivé le verrouillage (ton cas), la box tire dès qu'on appuie sur le bouton, y compris dans une poche. Éteins-la (5 clics) quand tu ne t'en sers pas, ou choisis le verrouillage par bouton."
             ]
           },
           {
-            "title": "Verrouillage A-Lock",
+            "title": "Le menu",
             "items": [
-              "Il évite les tirs ou les changements accidentels dans la poche.",
-              "Pour verrouiller ou déverrouiller : appuie en même temps sur + et −."
+              "3 clics sur le bouton de tir ouvrent le menu.",
+              "Navigue avec les boutons haut et bas, valide avec le bouton de tir.",
+              "Tu y trouves : les modes, le verrouillage, la remise à zéro du compteur de bouffées, la couleur et la luminosité de l'écran."
             ]
           },
           {
             "title": "Régler la puissance",
             "items": [
-              "En utilisation normale, utilise + et − pour changer la puissance (ou la température en mode température).",
-              "Plage de la box : 5 à 200 W. Pour ta résistance, reste dans la plage indiquée par l'appli."
+              "Elle se règle par pas de 1 W avec les boutons haut et bas.",
+              "Le défilement est rapide et reboucle d'une extrémité à l'autre.",
+              "Reste dans la plage conseillée pour ta résistance (voir l'onglet Réglages)."
             ]
           },
           {
-            "title": "Changer la couleur d'affichage",
+            "title": "Les modes",
             "items": [
-              "Appuie 3 fois sur le bouton de tir, puis appuie en même temps sur + et − : les couleurs de l'écran défilent."
+              "Power : tu choisis la puissance en watts. C'est le mode à utiliser avec cette appli.",
+              "Smart : la box règle la puissance selon la résistance détectée.",
+              "Boost et Eco : puissance maximale ou minimale adaptée à la résistance.",
+              "Memory : 5 profils de réglages enregistrables.",
+              "Contrôle de température : disponible uniquement avec le coefficient TCR, sans préréglages.",
+              "Pas de mode Bypass ni de courbe de puissance."
             ]
           },
           {
             "title": "Recharger",
             "items": [
-              "Le port USB-C est protégé par un cache ; il sert aussi aux mises à jour du logiciel.",
-              "Recharge dans la box avec un câble et un chargeur de bonne qualité, sans la laisser sans surveillance."
+              "Port USB-C, charge annoncée en 5 V / 3 A.",
+              "Pendant la charge, l'écran affiche le niveau de chaque accu.",
+              "Une recharge dans un chargeur externe ménage davantage les accus."
             ]
           },
           {
             "title": "Caractéristiques",
             "items": [
-              "Puissance : 5 à 200 W.",
-              "Écran couleur TFT de 1,08 pouce.",
-              "Étanche, anti-poussière et anti-chocs (norme IP68).",
-              "Température d'utilisation annoncée : −20 °C à 50 °C.",
-              "Accus : 2 x 18650."
+              "Puissance jusqu'à 200 W.",
+              "Résistances détectées : de 0,1 à 3,0 Ω.",
+              "Puce AS 4.0 à tension stabilisée : saveur régulière même quand les accus faiblissent.",
+              "Étanche, anti-poussière et anti-chocs (norme IP68)."
             ]
           },
           {
