@@ -509,10 +509,41 @@ if (typeof document !== "undefined") {
         t.setAttribute("aria-selected", on);
       });
       document.querySelectorAll(".panel").forEach((p) => (p.hidden = p.id !== "panel-" + name));
+      $("app").classList.toggle("wide", name === "comparer");
+    }
+
+    /* ----- Plein écran du tableau comparatif (paysage sur téléphone) ----- */
+    function setupFullscreen() {
+      const card = $("cmp-card");
+      const btn = $("cmp-full");
+      if (!card.requestFullscreen) return; // ex. iPhone : le bouton reste masqué
+      btn.hidden = false;
+      btn.addEventListener("click", () => {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+          return;
+        }
+        card
+          .requestFullscreen()
+          .then(() => (screen.orientation && screen.orientation.lock ? screen.orientation.lock("landscape") : null))
+          .catch(() => {});
+      });
+      document.addEventListener("fullscreenchange", () => {
+        const on = !!document.fullscreenElement;
+        btn.textContent = on ? "Quitter le plein écran" : "Plein écran";
+        if (!on && screen.orientation && screen.orientation.unlock) {
+          try {
+            screen.orientation.unlock();
+          } catch (e) {
+            /* verrouillage d'orientation non pris en charge */
+          }
+        }
+      });
     }
 
     /* ----- Initialisation ----- */
     function bind() {
+      setupFullscreen();
       $("mod-select").addEventListener("change", (e) => setMod(e.target.value));
       $("cmp-pick").addEventListener("click", (e) => {
         const b = e.target.closest("[data-cmp]");
@@ -521,6 +552,7 @@ if (typeof document !== "undefined") {
       $("cmp-table").addEventListener("click", (e) => {
         const b = e.target.closest("[data-use]");
         if (!b) return;
+        if (document.fullscreenElement) document.exitFullscreen();
         setMod(b.dataset.use);
         showTab("reglages");
         window.scrollTo(0, 0);
