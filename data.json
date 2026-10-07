@@ -95,6 +95,33 @@
           }
         ]
       }
+    },
+    {
+      "id": "innokin-coolfire-z80",
+      "brand": "Innokin",
+      "name": "Coolfire Z80",
+      "minW": 6,
+      "maxW": 80,
+      "batteries": "1 x 18650",
+      "note": "Box régulée 6-80 W, un accu 18650. Vendue avec le réservoir Zenith 2."
+    },
+    {
+      "id": "voopoo-drag-5",
+      "brand": "Voopoo",
+      "name": "Drag 5",
+      "minW": 5,
+      "maxW": 177,
+      "batteries": "2 x 18650",
+      "note": "Box régulée 5-177 W, deux accus 18650. Vendue avec le réservoir UFORCE-X."
+    },
+    {
+      "id": "vaporesso-target-100",
+      "brand": "Vaporesso",
+      "name": "Target 100",
+      "minW": 5,
+      "maxW": 100,
+      "batteries": "1 x 21700",
+      "note": "Box régulée 5-100 W, un accu 21700. Vendue avec le réservoir iTank."
     }
   ],
   "tanks": [
@@ -105,6 +132,33 @@
       "family": "z-coil",
       "capacityMl": 2,
       "note": "Réservoir 2 ml, flux d'air par le haut, compatible avec toute la gamme de résistances Z (0,1 à 3,5 Ω)."
+    },
+    {
+      "id": "aspire-nautilus-3",
+      "brand": "Aspire",
+      "name": "Nautilus 3",
+      "family": "nautilus",
+      "capacityMl": 2,
+      "note": "Réservoir 2 ml, raccord 510 de 24 mm, flux d'air réglable sur 7 positions."
+    },
+    {
+      "id": "voopoo-uforce-x",
+      "brand": "Voopoo",
+      "name": "UFORCE-X",
+      "family": "pnp-x",
+      "capacityMl": 2,
+      "note": "Réservoir 2 ml (version européenne), raccord 510 de 28 mm, résistances PnP-X."
+    },
+    {
+      "id": "vaporesso-itank",
+      "brand": "Vaporesso",
+      "name": "iTank",
+      "family": "gti",
+      "capacityMl": 2,
+      "mods": [
+        "vaporesso-target-100"
+      ],
+      "note": "Réservoir de la Target 100 (2 ml en version européenne), résistances GTi mesh."
     }
   ],
   "coils": [
@@ -191,6 +245,174 @@
       "maxW": 14,
       "confidence": "high",
       "note": "Vape fraîche à basse puissance, adaptée aux sels de nicotine."
+    },
+    {
+      "id": "n-0.4",
+      "family": "nautilus",
+      "name": "Nautilus 2S 0,4 Ω",
+      "ohm": 0.4,
+      "style": "",
+      "material": "Mesh",
+      "minW": 23,
+      "maxW": 28,
+      "confidence": "medium",
+      "note": ""
+    },
+    {
+      "id": "n-0.7",
+      "family": "nautilus",
+      "name": "Nautilus Mesh 0,7 Ω",
+      "ohm": 0.7,
+      "style": "RDL",
+      "material": "Mesh",
+      "minW": 18,
+      "maxW": 23,
+      "confidence": "medium",
+      "note": ""
+    },
+    {
+      "id": "n-0.7-2s",
+      "family": "nautilus",
+      "name": "Nautilus 2S Mesh 0,7 Ω",
+      "ohm": 0.7,
+      "style": "RDL",
+      "material": "Mesh",
+      "minW": 20,
+      "maxW": 25,
+      "confidence": "medium",
+      "note": "Livrée préinstallée avec le Nautilus 3."
+    },
+    {
+      "id": "n-1.6",
+      "family": "nautilus",
+      "name": "Nautilus BVC 1,6 Ω",
+      "ohm": 1.6,
+      "style": "",
+      "material": "BVC",
+      "minW": 7,
+      "maxW": 11,
+      "confidence": "medium",
+      "note": ""
+    },
+    {
+      "id": "n-1.8",
+      "family": "nautilus",
+      "name": "Nautilus BVC 1,8 Ω",
+      "ohm": 1.8,
+      "style": "",
+      "material": "BVC",
+      "minW": 10,
+      "maxW": 14,
+      "confidence": "medium",
+      "note": "Fournie avec le Nautilus 3."
+    },
+    {
+      "id": "g-0.2",
+      "family": "gti",
+      "name": "GTi Mesh 0,2 Ω",
+      "ohm": 0.2,
+      "style": "DTL",
+      "material": "Mesh",
+      "minW": 60,
+      "maxW": 75,
+      "confidence": "medium",
+      "note": "Plus adaptée aux box à forte puissance."
+    },
+    {
+      "id": "g-0.4",
+      "family": "gti",
+      "name": "GTi Mesh 0,4 Ω",
+      "ohm": 0.4,
+      "style": "DTL",
+      "material": "Mesh",
+      "minW": 50,
+      "maxW": 60,
+      "confidence": "high",
+      "note": "Un test indépendant la trouve bien à environ 55 W."
+    },
+    {
+      "id": "p-0.15",
+      "family": "pnp-x",
+      "name": "PnP-X 0,15 Ω",
+      "ohm": 0.15,
+      "style": "DTL",
+      "material": "Mesh",
+      "minW": 60,
+      "maxW": 80,
+      "confidence": "high",
+      "note": "Fournie avec le Drag 5 / UFORCE-X."
+    },
+    {
+      "id": "p-0.2",
+      "family": "pnp-x",
+      "name": "PnP-X 0,2 Ω",
+      "ohm": 0.2,
+      "style": "DTL",
+      "material": "Mesh",
+      "minW": 40,
+      "maxW": 60,
+      "confidence": "high",
+      "note": "Fournie avec le UFORCE-X."
+    },
+    {
+      "id": "p-0.3",
+      "family": "pnp-x",
+      "name": "PnP-X 0,3 Ω",
+      "ohm": 0.3,
+      "style": "DTL",
+      "material": "Mesh",
+      "minW": 32,
+      "maxW": 40,
+      "confidence": "high",
+      "note": "Fournie avec le Drag 5."
+    },
+    {
+      "id": "p-0.45",
+      "family": "pnp-x",
+      "name": "PnP-X 0,45 Ω",
+      "ohm": 0.45,
+      "style": "RDL",
+      "material": "Mesh",
+      "minW": 25,
+      "maxW": 32,
+      "confidence": "high",
+      "note": ""
+    },
+    {
+      "id": "p-0.6",
+      "family": "pnp-x",
+      "name": "PnP-X 0,6 Ω",
+      "ohm": 0.6,
+      "style": "RDL",
+      "material": "Mesh",
+      "minW": 18,
+      "maxW": 23,
+      "confidence": "medium",
+      "note": "Un revendeur annonce 20-28 W pour la même résistance."
+    },
+    {
+      "id": "p-0.8",
+      "family": "pnp-x",
+      "name": "PnP-X 0,8 Ω",
+      "ohm": 0.8,
+      "style": "MTL",
+      "material": "Mesh",
+      "minW": 12,
+      "maxW": 16,
+      "confidence": "medium",
+      "note": ""
+    },
+    {
+      "id": "p-1.0",
+      "family": "pnp-x",
+      "name": "PnP-X 1,0 Ω",
+      "ohm": 1.0,
+      "style": "MTL",
+      "material": "Mesh",
+      "minW": 10,
+      "maxW": 13,
+      "confidence": "medium",
+      "note": ""
     }
   ]
 }

@@ -77,6 +77,7 @@ if (typeof document !== "undefined") {
     const currentMod = () => byId(data.mods, state.modId);
     const currentTank = () => byId(data.tanks, state.tankId);
     const currentCoil = () => byId(allCoils(), state.coilId);
+    const tanksForMod = (mod) => data.tanks.filter((t) => !t.mods || (mod && t.mods.includes(mod.id)));
     const allCoils = () => data.coils.concat(customCoils);
     const coilsForTank = (tank) => (tank ? allCoils().filter((c) => c.family === tank.family) : []);
 
@@ -92,7 +93,7 @@ if (typeof document !== "undefined") {
       modSel.innerHTML = data.mods
         .map((m) => `<option value="${escapeHtml(m.id)}">${escapeHtml(m.brand + " " + m.name)}</option>`)
         .join("");
-      tankSel.innerHTML = data.tanks
+      tankSel.innerHTML = tanksForMod(currentMod())
         .map((t) => `<option value="${escapeHtml(t.id)}">${escapeHtml(t.brand + " " + t.name)}</option>`)
         .join("");
       modSel.value = state.modId;
@@ -158,7 +159,7 @@ if (typeof document !== "undefined") {
           const active = c.id === state.coilId ? " active" : "";
           return `<button class="chip${active}" data-coil="${escapeHtml(c.id)}" aria-pressed="${c.id === state.coilId}">
             <span class="chip-ohm">${formatNumber(c.ohm, 2)} Ω${c.custom ? ' <small>(perso)</small>' : ""}</span>
-            <span class="chip-range">${escapeHtml(rangeText(c))}</span>
+            <span class="chip-range">${escapeHtml(rangeText(c) + (c.confidence === "medium" ? " *" : ""))}</span>
           </button>`;
         })
         .join("");
@@ -187,6 +188,16 @@ if (typeof document !== "undefined") {
       $("coil-meta").textContent = [coil.style, coil.material].filter(Boolean).join(" · ");
       $("cc-del").hidden = !coil.custom;
       $("coil-note").textContent = coil.note || "";
+      const conf = $("coil-conf");
+      if (coil.confidence === "medium") {
+        conf.textContent = "* Plage issue d'une seule source (fiche revendeur ou test) : confirme-la avec l'inscription sur ta résistance.";
+        conf.hidden = false;
+      } else if (coil.confidence === "missing") {
+        conf.textContent = "Plage non trouvée : lis l'inscription sur ta résistance.";
+        conf.hidden = false;
+      } else {
+        conf.hidden = true;
+      }
 
       const hint = $("start-hint");
       if (coil.minW != null) {
@@ -364,8 +375,16 @@ if (typeof document !== "undefined") {
     function bind() {
       $("mod-select").addEventListener("change", (e) => {
         state.modId = e.target.value;
+        const okTanks = tanksForMod(currentMod());
+        if (!byId(okTanks, state.tankId)) {
+          state.tankId = okTanks[0].id;
+          const first = coilsForTank(currentTank())[0];
+          state.coilId = first ? first.id : null;
+          state.coilChanged = true;
+        }
         save(STORE_STATE, state);
         renderGear();
+        renderCoils();
         renderResult();
       });
       $("tank-select").addEventListener("change", (e) => {
@@ -422,7 +441,8 @@ if (typeof document !== "undefined") {
       favs = load(STORE_FAVS, []);
       customCoils = load(STORE_CUSTOM, []);
       state.modId = byId(data.mods, saved.modId) ? saved.modId : data.mods[0].id;
-      state.tankId = byId(data.tanks, saved.tankId) ? saved.tankId : data.tanks[0].id;
+      const okTanks = tanksForMod(currentMod());
+      state.tankId = byId(okTanks, saved.tankId) ? saved.tankId : okTanks[0].id;
       const coils = coilsForTank(currentTank());
       state.coilId = byId(coils, saved.coilId) ? saved.coilId : coils[0] ? coils[0].id : null;
       state.watts = typeof saved.watts === "number" ? saved.watts : null;
