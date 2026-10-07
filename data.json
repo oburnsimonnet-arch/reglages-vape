@@ -9,7 +9,86 @@
       "minW": 5,
       "maxW": 200,
       "batteries": "2 x 18650",
-      "note": "Box régulée 5-200 W (série Legend 2/3/5, deux accus 18650)."
+      "note": "Box régulée 5-200 W (série Legend 2/3/5, deux accus 18650).",
+      "manual": {
+        "title": "Notice : Aegis Legend 2 (L200)",
+        "warning": "Ces consignes concernent le Legend 2 (L200). Le Legend 3 (verrouillage tactile) et le Legend 5 (levier latéral) se verrouillent autrement : en cas de doute, vérifie sur la notice papier de ta box.",
+        "source": "Notice Geekvape Aegis Legend 2, résumée",
+        "sourceUrl": "https://carnac.kendalch.com/upload/files/2564716312.pdf",
+        "sections": [
+          {
+            "title": "Installer les accus",
+            "items": [
+              "La box fonctionne avec deux accus 18650.",
+              "Le logement s'ouvre par la trappe située sous la box : pousse le loquet en glissant avec une pression modérée.",
+              "Respecte le sens + / − indiqué dans le logement ; les contacts sont plaqués or.",
+              "Utilise deux accus identiques (même marque, même modèle, même niveau de charge), de bonne qualité."
+            ]
+          },
+          {
+            "title": "Allumer et éteindre",
+            "items": [
+              "Appuie 5 fois rapidement sur le bouton de tir (en 2 secondes environ) pour allumer : une animation s'affiche.",
+              "Refais les 5 clics pour éteindre."
+            ]
+          },
+          {
+            "title": "Les clics sur le bouton de tir",
+            "items": [
+              "1 clic : tirer (vaper).",
+              "3 clics : ouvrir le menu des réglages.",
+              "5 clics : allumer ou éteindre.",
+              "Appui long : quitter le menu des réglages."
+            ]
+          },
+          {
+            "title": "Verrouillage A-Lock",
+            "items": [
+              "Il évite les tirs ou les changements accidentels dans la poche.",
+              "Pour verrouiller ou déverrouiller : appuie en même temps sur + et −."
+            ]
+          },
+          {
+            "title": "Régler la puissance",
+            "items": [
+              "En utilisation normale, utilise + et − pour changer la puissance (ou la température en mode température).",
+              "Plage de la box : 5 à 200 W. Pour ta résistance, reste dans la plage indiquée par l'appli."
+            ]
+          },
+          {
+            "title": "Changer la couleur d'affichage",
+            "items": [
+              "Appuie 3 fois sur le bouton de tir, puis appuie en même temps sur + et − : les couleurs de l'écran défilent."
+            ]
+          },
+          {
+            "title": "Recharger",
+            "items": [
+              "Le port USB-C est protégé par un cache ; il sert aussi aux mises à jour du logiciel.",
+              "Recharge dans la box avec un câble et un chargeur de bonne qualité, sans la laisser sans surveillance."
+            ]
+          },
+          {
+            "title": "Caractéristiques",
+            "items": [
+              "Puissance : 5 à 200 W.",
+              "Écran couleur TFT de 1,08 pouce.",
+              "Étanche, anti-poussière et anti-chocs (norme IP68).",
+              "Température d'utilisation annoncée : −20 °C à 50 °C.",
+              "Accus : 2 x 18650."
+            ]
+          },
+          {
+            "title": "Sécurité",
+            "items": [
+              "N'utilise que des accus 18650 adaptés et en bon état (gaine intacte).",
+              "Ne laisse pas la box ni les accus dans un endroit très chaud (voiture au soleil).",
+              "Si la box chauffe anormalement, sent mauvais ou affiche une erreur répétée, arrête de l'utiliser et retire les accus.",
+              "La box ne connaît pas la plage de ta résistance : c'est à toi de rester dans la plage conseillée."
+            ]
+          }
+        ]
+      }
     }
   ],
   "tanks": [

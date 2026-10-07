@@ -100,6 +100,54 @@ if (typeof document !== "undefined") {
       const mod = currentMod();
       const tank = currentTank();
       $("gear-note").textContent = [mod && mod.note, tank && tank.note].filter(Boolean).join(" ");
+      renderManual();
+    }
+
+    /* ----- Notice de la box ----- */
+    function renderManual() {
+      const mod = currentMod();
+      const m = mod && mod.manual;
+      const tab = document.querySelector('[data-tab="notice"]');
+      if (!m) {
+        tab.hidden = true;
+        return;
+      }
+      tab.hidden = false;
+      $("manual-title").textContent = m.title || "Notice";
+      $("manual-warning").textContent = m.warning || "";
+      const box = $("manual-sections");
+      box.textContent = "";
+      (m.sections || []).forEach((s, i) => {
+        const det = document.createElement("details");
+        det.className = "manual-sec";
+        if (i === 0) det.open = true;
+        const sum = document.createElement("summary");
+        sum.textContent = s.title;
+        const ul = document.createElement("ul");
+        (s.items || []).forEach((t) => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          ul.appendChild(li);
+        });
+        det.appendChild(sum);
+        det.appendChild(ul);
+        box.appendChild(det);
+      });
+      const src = $("manual-source");
+      src.textContent = "";
+      if (m.source) {
+        src.appendChild(document.createTextNode("Source : "));
+        if (/^https:\/\//.test(m.sourceUrl || "")) {
+          const a = document.createElement("a");
+          a.href = m.sourceUrl;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = m.source;
+          src.appendChild(a);
+        } else {
+          src.appendChild(document.createTextNode(m.source));
+        }
+      }
     }
 
     /* ----- Résistances ----- */

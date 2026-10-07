@@ -105,6 +105,10 @@
     }
     .saved { color: var(--ok); font-size: 14px; min-height: 20px; margin: 8px 0 0; }
 
+    .manual-sec { border-top: 1px solid var(--line); padding: 10px 0; }
+    .manual-sec summary { cursor: pointer; font-weight: 700; }
+    .manual-sec ul { margin: 8px 0 0; padding-left: 20px; }
+    .manual-sec li { margin: 4px 0; }
     .custom { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
     .custom summary { cursor: pointer; color: var(--accent); font-weight: 600; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -135,6 +139,7 @@
       <button class="tab active" data-tab="reglages" role="tab" aria-selected="true">Réglages</button>
       <button class="tab" data-tab="favoris" role="tab" aria-selected="false">Favoris</button>
       <button class="tab" data-tab="calcul" role="tab" aria-selected="false">Calcul</button>
+      <button class="tab" data-tab="notice" role="tab" aria-selected="false">Notice</button>
     </nav>
 
     <div id="load-error" class="error" hidden>Impossible de charger les données (data.json). Vérifie la connexion puis recharge la page.</div>
@@ -224,6 +229,14 @@
         <input type="text" id="calc-watt" inputmode="decimal" value="16">
         <p class="calc-out" id="calc-out"></p>
         <p class="note">Formules : tension = √(puissance × résistance), courant = √(puissance ÷ résistance).</p>
+      </div>
+    </section>
+    <section id="panel-notice" class="panel" hidden>
+      <div class="card">
+        <h2 id="manual-title">Notice</h2>
+        <p class="note" id="manual-warning"></p>
+        <div id="manual-sections"></div>
+        <p class="note" id="manual-source"></p>
       </div>
     </section>
   </div>
