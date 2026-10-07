@@ -1,5 +1,5 @@
 /* Service worker : fonctionnement hors ligne, avec mise à jour des données en arrière-plan */
-const CACHE = "reglages-vape-v3";
+const CACHE = "reglages-vape-v4";
 const SHELL = ["./", "./index.html", "./app.js", "./data.json", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (event) => {

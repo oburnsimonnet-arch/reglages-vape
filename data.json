@@ -161,12 +161,12 @@
       "family": "z-coil",
       "name": "Z Coil 1,0 Ω",
       "ohm": 1.0,
-      "style": "RDL léger / MTL chaud",
+      "style": "RDL / MTL chaud",
       "material": "Kanthal",
-      "minW": null,
-      "maxW": null,
-      "confidence": "missing",
-      "note": "Plage non trouvée dans mes sources : lis l'inscription gravée sur la résistance."
+      "minW": 20,
+      "maxW": 25,
+      "confidence": "high",
+      "note": "Plage relevée sur l'emballage Innokin : conçue pour le poumon restreint et le bouche-poumon chaud."
     },
     {
       "id": "z-1.2",
