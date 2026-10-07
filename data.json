@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "updated": "2026-10-07",
+  "mods": [
+    {
+      "id": "geekvape-aegis-legend",
+      "brand": "Geekvape",
+      "name": "Aegis Legend",
+      "minW": 5,
+      "maxW": 200,
+      "batteries": "2 x 18650",
+      "note": "Box régulée 5-200 W (série Legend 2/3/5, deux accus 18650)."
+    }
+  ],
+  "tanks": [
+    {
+      "id": "innokin-zenith-2",
+      "brand": "Innokin",
+      "name": "Zenith 2",
+      "family": "z-coil",
+      "capacityMl": 2,
+      "note": "Réservoir 2 ml, flux d'air par le haut, compatible avec toute la gamme de résistances Z (0,1 à 3,5 Ω)."
+    }
+  ],
+  "coils": [
+    {
+      "id": "z-0.3",
+      "family": "z-coil",
+      "name": "Z Coil 0,3 Ω",
+      "ohm": 0.3,
+      "style": "RDL",
+      "material": "Mesh",
+      "minW": 30,
+      "maxW": 40,
+      "confidence": "high",
+      "note": "Poumon restreint, plus de vapeur. Fournie avec le kit Zenith 2."
+    },
+    {
+      "id": "z-0.48",
+      "family": "z-coil",
+      "name": "Z Coil Plex3D 0,48 Ω",
+      "ohm": 0.48,
+      "style": "RDL",
+      "material": "Mesh Plex3D",
+      "minW": 13,
+      "maxW": 16,
+      "confidence": "high",
+      "note": "Mesh 3D, bonne saveur et longévité."
+    },
+    {
+      "id": "z-0.5",
+      "family": "z-coil",
+      "name": "Z Coil Plexus 0,5 Ω",
+      "ohm": 0.5,
+      "style": "RDL",
+      "material": "Mesh Plexus",
+      "minW": 14,
+      "maxW": 19,
+      "confidence": "high",
+      "note": "Un peu plus chaude : demande une puissance un peu plus haute."
+    },
+    {
+      "id": "z-0.8",
+      "family": "z-coil",
+      "name": "Z Coil 0,8 Ω",
+      "ohm": 0.8,
+      "style": "MTL",
+      "material": "Kanthal",
+      "minW": 15,
+      "maxW": 18,
+      "confidence": "high",
+      "note": "Bouche-poumon. Certains revendeurs affichent 14-17 W pour le même modèle."
+    },
+    {
+      "id": "z-1.0",
+      "family": "z-coil",
+      "name": "Z Coil 1,0 Ω",
+      "ohm": 1.0,
+      "style": "RDL léger / MTL chaud",
+      "material": "Kanthal",
+      "minW": null,
+      "maxW": null,
+      "confidence": "missing",
+      "note": "Plage non trouvée dans mes sources : lis l'inscription gravée sur la résistance."
+    },
+    {
+      "id": "z-1.2",
+      "family": "z-coil",
+      "name": "Z Coil 1,2 Ω",
+      "ohm": 1.2,
+      "style": "MTL",
+      "material": "Kanthal + coton mixte",
+      "minW": 10,
+      "maxW": 14,
+      "confidence": "medium",
+      "note": "Plage issue d'un témoignage de forum, à confirmer avec l'inscription sur la résistance."
+    },
+    {
+      "id": "z-1.6",
+      "family": "z-coil",
+      "name": "Z Coil 1,6 Ω",
+      "ohm": 1.6,
+      "style": "MTL",
+      "material": "Kanthal",
+      "minW": 10,
+      "maxW": 14,
+      "confidence": "high",
+      "note": "Vape fraîche à basse puissance, adaptée aux sels de nicotine."
+    }
+  ]
+}

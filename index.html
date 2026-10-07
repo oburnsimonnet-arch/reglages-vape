@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14181f">
+  <title>Réglages Vape</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <style>
+    :root {
+      --bg: #14181f;
+      --card: #1d232d;
+      --card-2: #252d3a;
+      --text: #eef1f6;
+      --muted: #9aa6b8;
+      --accent: #4cc2a8;
+      --accent-ink: #06231c;
+      --ok: #4cc2a8;
+      --warn: #e8b64a;
+      --bad: #ef6f6f;
+      --line: #313b4b;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f3f5f8;
+        --card: #ffffff;
+        --card-2: #e9edf3;
+        --text: #17202c;
+        --muted: #586579;
+        --accent: #0f8a72;
+        --accent-ink: #ffffff;
+        --ok: #0f8a72;
+        --warn: #9a6a00;
+        --bad: #b83232;
+        --line: #d3dae4;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--text); }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.45;
+      padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    }
+    .wrap { max-width: 520px; margin: 0 auto; padding: 0 16px; }
+    header { padding: calc(18px + env(safe-area-inset-top)) 0 10px; }
+    h1 { font-size: 22px; margin: 0; letter-spacing: .2px; }
+    .sub { color: var(--muted); font-size: 14px; margin: 2px 0 0; }
+
+    nav { display: flex; gap: 6px; margin: 10px 0 14px; background: var(--card); padding: 5px; border-radius: 14px; }
+    .tab {
+      flex: 1; border: 0; background: transparent; color: var(--muted);
+      padding: 10px 6px; border-radius: 10px; font: inherit; font-weight: 600; cursor: pointer;
+    }
+    .tab.active { background: var(--accent); color: var(--accent-ink); }
+
+    .card { background: var(--card); border-radius: 16px; padding: 16px; margin-bottom: 14px; }
+    .card h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin: 0 0 10px; font-weight: 700; }
+    label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px; }
+    select, input[type="text"], input[type="number"], input[inputmode] {
+      width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--line);
+      background: var(--card-2); color: var(--text); font: inherit;
+    }
+    .note { color: var(--muted); font-size: 13px; margin: 10px 0 0; }
+
+    .chips { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .chip {
+      text-align: left; border: 1px solid var(--line); background: var(--card-2); color: var(--text);
+      border-radius: 12px; padding: 10px 12px; font: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px;
+    }
+    .chip.active { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+    .chip-ohm { font-weight: 700; font-size: 17px; }
+    .chip-range { color: var(--muted); font-size: 13px; }
+
+    .big { font-size: 38px; font-weight: 800; margin: 0; line-height: 1.1; }
+    .meta { color: var(--muted); margin: 4px 0 0; font-size: 14px; }
+    .hint { margin: 10px 0 0; font-size: 14px; }
+
+    .slider-block { margin-top: 16px; }
+    .readout { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+    .readout .w { font-size: 26px; font-weight: 800; }
+    .readout .ev { color: var(--muted); font-size: 14px; text-align: right; }
+
+    .range-bar {
+      --from: 25%; --to: 75%;
+      height: 8px; border-radius: 6px; margin: 4px 0 0;
+      background: linear-gradient(to right,
+        var(--card-2) 0, var(--card-2) var(--from),
+        var(--accent) var(--from), var(--accent) var(--to),
+        var(--card-2) var(--to), var(--card-2) 100%);
+    }
+    input[type="range"] { width: 100%; margin: 6px 0 0; accent-color: var(--accent); height: 32px; }
+    .status { margin-top: 10px; padding: 10px 12px; border-radius: 10px; font-size: 14px; font-weight: 600; border: 1px solid; }
+    .status.ok { color: var(--ok); border-color: var(--ok); }
+    .status.warn { color: var(--warn); border-color: var(--warn); }
+    .status.bad { color: var(--bad); border-color: var(--bad); }
+
+    .row { display: flex; gap: 8px; margin-top: 12px; }
+    .btn {
+      border: 0; background: var(--accent); color: var(--accent-ink); font: inherit; font-weight: 700;
+      padding: 12px 16px; border-radius: 12px; cursor: pointer; white-space: nowrap;
+    }
+    .saved { color: var(--ok); font-size: 14px; min-height: 20px; margin: 8px 0 0; }
+
+    .custom { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
+    .custom summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .btn.danger { background: transparent; color: var(--bad); border: 1px solid var(--bad); }
+    .fav { display: flex; align-items: stretch; gap: 8px; margin-bottom: 8px; }
+    .fav-main {
+      flex: 1; text-align: left; border: 1px solid var(--line); background: var(--card-2); color: var(--text);
+      border-radius: 12px; padding: 10px 12px; font: inherit; cursor: pointer; display: flex; flex-direction: column; gap: 2px;
+    }
+    .fav-main span { color: var(--muted); font-size: 13px; }
+    .fav-del { border: 1px solid var(--line); background: transparent; color: var(--bad); border-radius: 12px; padding: 0 12px; font: inherit; cursor: pointer; }
+    .empty { color: var(--muted); margin: 0; }
+
+    .calc-out { font-size: 18px; margin: 14px 0 0; }
+    .error { background: var(--card); border: 1px solid var(--bad); color: var(--bad); padding: 12px; border-radius: 12px; }
+    .safety { color: var(--muted); font-size: 12.5px; margin: 6px 4px 0; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Réglages Vape</h1>
+      <p class="sub">Puissance conseillée selon ta box et ta résistance</p>
+    </header>
+
+    <nav role="tablist">
+      <button class="tab active" data-tab="reglages" role="tab" aria-selected="true">Réglages</button>
+      <button class="tab" data-tab="favoris" role="tab" aria-selected="false">Favoris</button>
+      <button class="tab" data-tab="calcul" role="tab" aria-selected="false">Calcul</button>
+    </nav>
+
+    <div id="load-error" class="error" hidden>Impossible de charger les données (data.json). Vérifie la connexion puis recharge la page.</div>
+
+    <section id="panel-reglages" class="panel">
+      <div class="card">
+        <h2>Mon matériel</h2>
+        <label for="mod-select">Box</label>
+        <select id="mod-select"></select>
+        <label for="tank-select">Réservoir</label>
+        <select id="tank-select"></select>
+        <p class="note" id="gear-note"></p>
+      </div>
+
+      <div class="card">
+        <h2>Ma résistance</h2>
+        <div class="chips" id="coil-list"></div>
+        <details class="custom">
+          <summary>Ma résistance n'est pas dans la liste</summary>
+          <p class="note">Recopie la valeur en ohms et la plage de puissance gravées sur la résistance.</p>
+          <label for="cc-ohm">Résistance (Ω)</label>
+          <input type="text" id="cc-ohm" inputmode="decimal" placeholder="ex. 0,8">
+          <div class="two">
+            <div>
+              <label for="cc-min">Puissance min (W)</label>
+              <input type="text" id="cc-min" inputmode="decimal" placeholder="14">
+            </div>
+            <div>
+              <label for="cc-max">Puissance max (W)</label>
+              <input type="text" id="cc-max" inputmode="decimal" placeholder="18">
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn" id="cc-add">Ajouter cette résistance</button>
+          </div>
+          <p class="saved" id="cc-msg" role="status"></p>
+        </details>
+      </div>
+
+      <div class="card" id="result" hidden>
+        <h2>Réglage conseillé</h2>
+        <p class="meta" id="coil-name"></p>
+        <p class="big" id="coil-range"></p>
+        <p class="meta" id="coil-meta"></p>
+        <p class="hint" id="start-hint"></p>
+        <p class="note" id="coil-note"></p>
+
+        <div class="slider-block">
+          <div class="readout">
+            <span class="w" id="watt-value"></span>
+            <span class="ev"><span id="volt-value"></span> · <span id="amp-value"></span></span>
+          </div>
+          <div class="range-bar" id="range-bar"></div>
+          <input type="range" id="watt-slider" aria-label="Puissance en watts">
+          <div class="status" id="status"></div>
+        </div>
+
+        <label for="fav-note">Note pour ce réglage (facultatif)</label>
+        <div class="row">
+          <input type="text" id="fav-note" maxlength="80" placeholder="ex. e-liquide fruité 50/50">
+        </div>
+        <div class="row">
+          <button class="btn" id="save-fav">Enregistrer ce réglage</button>
+        </div>
+        <p class="saved" id="saved-msg" role="status"></p>
+        <div class="row">
+          <button class="btn danger" id="cc-del" hidden>Supprimer cette résistance perso</button>
+        </div>
+      </div>
+
+      <p class="safety">Valeurs indicatives issues des plages annoncées par le fabricant. Pars toujours du bas de la plage et respecte l'inscription gravée sur ta résistance. Cette appli est prévue pour des box régulées (avec puce), pas pour des mods mécaniques.</p>
+    </section>
+
+    <section id="panel-favoris" class="panel" hidden>
+      <div class="card">
+        <h2>Mes réglages</h2>
+        <div id="fav-list"></div>
+      </div>
+    </section>
+
+    <section id="panel-calcul" class="panel" hidden>
+      <div class="card">
+        <h2>Calculateur</h2>
+        <label for="calc-ohm">Résistance (Ω)</label>
+        <input type="text" id="calc-ohm" inputmode="decimal" value="0,8">
+        <label for="calc-watt">Puissance (W)</label>
+        <input type="text" id="calc-watt" inputmode="decimal" value="16">
+        <p class="calc-out" id="calc-out"></p>
+        <p class="note">Formules : tension = √(puissance × résistance), courant = √(puissance ÷ résistance).</p>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
